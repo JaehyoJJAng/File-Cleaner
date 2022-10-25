@@ -19,6 +19,6 @@ $ python3 file-cleaner.py
 
 <p>
   <strong>
-    Replace the path of 'self.target_dir' in 'file-cleaner.py' with your desired path.
+    Replace the path of self.target_dir in file-cleaner.py with your desired path.
   </strong>
 </p>
