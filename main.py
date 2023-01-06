@@ -1,20 +1,23 @@
 import os
 import shutil
 from pathlib import Path
-from typing import List,Union
 
 class CleanUpFiles:
-    def __init__(self)-> None:
-        self.BASE_DIR   : str = Path(__file__).resolve().parent.parent
-        self.target_dir : str = 'utils'
+    def __init__(self):
+        self.BASE_DIR = Path(__file__).resolve().parent.parent
+        self.target_dir = 'utils'
 
-    def main(self)-> None:
-        file_list : List[Union[str,int]] = self.get_file_list()
-        self.clean_up(file_list=file_list)
+    def main(self):
+        file_list : list = self.get_file_list()
 
-    def clean_up(self,file_list: List[Union[str,int]]):
+        self.clean_up(
+            file_list=file_list
+        )
+
+    def clean_up(self,file_list: list):
         for file in file_list:
-            filename , extension : str = os.path.splitext(file)
+            filename , extension = os.path.splitext(file)
+
             if extension == '.py' :
                 continue
 
@@ -74,10 +77,11 @@ class CleanUpFiles:
                     os.mkdir(f'{self.BASE_DIR}/txt')
                 shutil.move(src_file , dst_file)
 
-    def get_file_list(self)-> List[Union[str,int]]:
-        target_path : str = os.path.join(self.BASE_DIR,self.target_dir)
+    def get_file_list(self)-> list:
+        target_path = os.path.join(self.BASE_DIR,self.target_dir)
 
-        file_list : List[Union[str,int]] = os.listdir(target_path)
+        file_list = os.listdir(target_path)
+
         return file_list
 
 if __name__ == '__main__':
